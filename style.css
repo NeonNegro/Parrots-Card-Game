@@ -1,0 +1,26 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #EEF9BF;
+}
+header{
+    display: flex;
+    justify-content: center;
+    padding: 15px 15px;
+}
+h1{
+    font-weight: bold;
+    font-size: 56px;
+    text-align: center;
+    color: #75B79E;
+    ;
+}
+
+
+
+@media (max-width:335px){
+    h1{
+        font-size: 36px;
+    }
+}
