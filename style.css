@@ -70,13 +70,6 @@ audio{
 .front-face {
     transform: rotateY(180deg);
 }
-/* .card:hover .back-face {
-    transform: rotateY(-180deg);
-} */
-
-/* .card:hover .front-face {
-    transform: rotateY(0deg);
-} */
 .back-face.face.show{
     transform: rotateY(-180deg);
 }
