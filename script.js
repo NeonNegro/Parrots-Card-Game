@@ -1,22 +1,41 @@
 (function(){
 
-    
-    let qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2; //let qtdCards = 8;
-    let deck = [];
+    let qtdCards;
+    let deck;
     let firstCard;
-    let rodadas = 0;
+    let rodadas;
+    let ClockId;
+    //Como uso essa variavel de segundo em segundo, achei q ela deveria ser global...
+    let clock = document.querySelector(".chronometer");
+    
+    startGame();
 
-    while((qtdCards%2) !== 0 || qtdCards < 4 || qtdCards >14)
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function startGame(){
+        document.querySelector("main").innerHTML = '';
+        deck = [];
+        firstCard = null;
+        rodadas = 0;
+        clock.innerHTML = '000';
+
         qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2;
 
-    getDeck(qtdCards);
-    shuffle();
-    putTable();
+        while((qtdCards%2) !== 0 || qtdCards < 4 || qtdCards >14)
+            qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2;
 
+
+        getDeck(qtdCards);
+        shuffle();
+        putTable();
+        startClock();
     
+    }
     function turn(event){
-        console.log("toim");
+
         let card = event.currentTarget;
+        let sound;
         
         card.querySelector(".front-face.face").classList.add("show");
         card.querySelector(".back-face.face").classList.add("show");
@@ -30,10 +49,11 @@
 
             if (card.querySelector(".front-face.face img").src !== firstCard.querySelector(".front-face.face img").src){
                 document.addEventListener("click", handler, true);
+                playWrong();
                 setTimeout(unTurn, 1000, card);
             } else {
-                card.removeEventListener('click', turn);
-                firstCard.removeEventListener('click', turn);
+                keepCorrect(card);
+                playGotcha();
                 setTimeout(checkEndGame, 300);
             }
         } else {
@@ -42,13 +62,18 @@
     }
 
 
-
-
-
     function checkEndGame() {
         let viradas = document.querySelectorAll(".show").length / 2;
-        if (viradas === qtdCards)
-            alert(`Você ganhou em ${rodadas} jogadas!`);
+        let tempo = parseInt(clock.innerHTML);
+        let escolha;
+        if (viradas === qtdCards){
+            stopClock();
+            escolha = prompt(`Você ganhou em ${rodadas} jogadas e
+${tempo} segundos!
+Deseja jogar novamente? (sim/não)`);
+            if(escolha === 'sim' || escolha === 's')
+                startGame();
+        }
     }
     function unTurn(card){
         card.querySelector(".front-face.face").classList.remove("show");
@@ -92,9 +117,42 @@
     function shuffle(){
         deck.sort(function(){return Math.random() - 0.5;});
     }
+    function keepCorrect(card){
+        let front = card.querySelector(".front-face.face.show");
+        let front2 = firstCard.querySelector(".front-face.face.show");
+        card.removeEventListener('click', turn);
+        front.classList.add("correct");
+        firstCard.removeEventListener('click', turn);
+        front2.classList.add("correct");
+    }
+    function playGotcha(){
+        sound = document.getElementById('gotcha');
+        sound.volume = 0.2;
+        sound.play();
+    }
+    function playWrong(){
+        sound = document.getElementById('wrong');
+        sound.volume = 0.2;
+        sound.play();
+    }
+    function startClock(){
+        clock.classList.add("showClock");
+        ClockId = setInterval(tik, 1000);
+    }
+    function tik(){
+        let time = parseInt(clock.innerHTML);
+        clock.innerHTML = pad(time+1);
+    }
+    function stopClock(){
+        clearInterval(ClockId);
+    }
     function handler(e) {
         e.stopPropagation();
         e.preventDefault();
+    }
+    function pad(num) {
+        let s = "0000" + num;
+        return s.substr(s.length-3);
     }
     
 })();

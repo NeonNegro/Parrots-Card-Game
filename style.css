@@ -7,7 +7,7 @@ body{
 header{
     display: flex;
     justify-content: center;
-    padding: 15px 15px;
+    padding: 15px 55px;
 }
 h1{
     font-weight: bold;
@@ -17,12 +17,28 @@ h1{
     ;
 }
 
+.chronometer{
+    display: none;
+    font-family: 'Orbitron', sans-serif;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    right: 5px;
+    background-color: #367A00;
+    color: #A7E9AF;
+    border-radius: 5px;
+    padding: 3px;
+}
+
 main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 34px;
     padding: 0 30px;
+}
+audio{
+    display: none;
 }
 .card{
     width: 200px;
@@ -66,10 +82,22 @@ main{
 }
 .front-face.face.show{
     transform: rotateY(0deg);
+    
+}
+.showClock{
+    display:initial;
+}
+.correct{
+    -webkit-box-shadow: 0px 0px 0px 7px #367A00; 
+    box-shadow: 0px 0px 0px 7px #367A00;
+    background-color: #60c90a;
 }
 
 @media (max-width:335px){
     h1{
         font-size: 36px;
+    }
+    header{
+        padding-left: 5px;
     }
 }
