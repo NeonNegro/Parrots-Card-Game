@@ -5,6 +5,8 @@
     let firstCard;
     let rodadas;
     let ClockId;
+    let sound;
+    let qtdFliped;
     //Como uso essa variavel de segundo em segundo, achei q ela deveria ser global...
     let clock = document.querySelector(".chronometer");
     
@@ -19,6 +21,7 @@
         firstCard = null;
         rodadas = 0;
         clock.innerHTML = '000';
+        qtdFliped = 0;
 
         qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2;
 
@@ -35,7 +38,6 @@
     function turn(event){
 
         let card = event.currentTarget;
-        let sound;
         
         card.querySelector(".front-face.face").classList.add("show");
         card.querySelector(".back-face.face").classList.add("show");
