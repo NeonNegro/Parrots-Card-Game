@@ -23,10 +23,10 @@
         clock.innerHTML = '000';
         qtdFliped = 0;
 
-        qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2;
+        qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 pares]?")) * 2;
 
         while((qtdCards%2) !== 0 || qtdCards < 4 || qtdCards >14)
-            qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 cartas]?")) * 2;
+            qtdCards = parseInt(prompt("Com quantos pares de cartas quer jogar? [2 - 7 pares]?")) * 2;
 
 
         getDeck(qtdCards);
