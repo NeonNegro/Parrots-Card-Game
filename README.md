@@ -8,7 +8,7 @@
  
   
  [](https://track-it-pied.vercel.app/) 
- Just click <a href="https://track-it-pied.vercel.app/" target="_blank"><strong>here</strong></a>
+ Just click <a href=https://parrots-card-game-gamma.vercel.app/ target="_blank"><strong>here</strong></a>
  or in the image.
 
 ## About
