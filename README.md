@@ -1,5 +1,15 @@
 # Parrots-Card-Game
  A memory game. Can you find out where are the sounds from?
+ 
+# Try it now!
+<p align="center">
+ <a href="https://parrots-card-game-gamma.vercel.app/" target="_blank"> <img src="https://i.imgur.com/WxblSko.png" height = "160" width = "160" alt="" />
+</p>
+ 
+  
+ [](https://track-it-pied.vercel.app/) 
+ Just click <a href="https://track-it-pied.vercel.app/" target="_blank"><strong>here</strong></a>
+ or in the image.
 
 ## About
 - A ```prompt``` will ask to choose the number of cards - an even number between 4 and 14
