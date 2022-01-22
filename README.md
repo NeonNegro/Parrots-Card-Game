@@ -3,7 +3,7 @@
  
 # Try it now!
 <p align="center">
- <a href="https://parrots-card-game-gamma.vercel.app/" target="_blank"> <img src="https://i.imgur.com/WxblSko.png" height = "160" width = "160" alt="" />
+ <a href="https://parrots-card-game-gamma.vercel.app/" target="_blank"> <img src="https://i.imgur.com/WxblSko.png" alt="" />
 </p>
  
   
